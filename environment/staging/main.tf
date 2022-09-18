@@ -1,10 +1,10 @@
 terraform {
   backend "s3" {
-    bucket    = "circleci-mydic"
-    region    = "ap-northeast-1"
-    profile   = "mydic"
-    key       = "terraform.tfstate"
-    encrypt   = true
+    bucket  = "circleci-mydic"
+    region  = "ap-northeast-1"
+    profile = "mydic"
+    key     = "terraform.tfstate"
+    encrypt = true
   }
 }
 
