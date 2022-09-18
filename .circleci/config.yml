@@ -10,13 +10,7 @@ jobs:
           path: ./environment/staging
       - terraform/validate:
           path: ./environment/staging
-      - terraform/fmt:
-          path: ./environment/staging
-      - terraform/plan:
-          path: ./environment/staging
       - terraform/apply:
-          path: ./environment/staging
-      - terraform/destroy:
           path: ./environment/staging
     working_directory: ~/work
 workflows:
