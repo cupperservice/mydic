@@ -18,7 +18,7 @@ jobs:
           path: ./environment/staging
       - terraform/destroy:
           path: ./environment/staging
-    working_directory: ~/
+    working_directory: ~/work
 workflows:
   single-job-lifecycle:
     jobs:
