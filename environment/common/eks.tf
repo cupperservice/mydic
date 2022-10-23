@@ -1,6 +1,6 @@
-resource "aws_iam_policy" "eks-cluster-role-trust-policy" {
-  name    = "eks-cluster-role-trust-policy"
-  policy  = <<-EOF
+resource "aws_iam_role" "eks-cluster-role" {
+  name                = "eks-cluster-role"
+  assume_role_policy  = <<-EOF
     {
       "Version": "2012-10-17",
       "Statement": [
@@ -14,4 +14,14 @@ resource "aws_iam_policy" "eks-cluster-role-trust-policy" {
       ]
     }
   EOF
+  managed_policy_arns = ["arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"]
+}
+
+resource "aws_eks_cluster" "mydic-cluster" {
+  name = "mydic-cluster"
+  role_arn = aws_iam_role.eks-cluster-role.arn
+
+  vpc_config {
+    subnet_ids = [aws_subnet.your-sub-pri1.id, aws_subnet.your-sub-pri2.id]
+  }
 }
